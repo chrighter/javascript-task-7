@@ -19,7 +19,7 @@ function runParallel(jobs, parallelNum, timeout = 1000) {
     let tasks = [];
     for (let i = 0; i < parallelNum; i++) {
         let newTask = next(jobs, result, timeout);
-        if (newTask !== undefined) {
+        if (newTask) {
             tasks.push(newTask);
         }
     }
@@ -44,7 +44,7 @@ function getNextTasks(jobs, timeout) {
 
 function next(jobs, result, timeout) {
     let task = getNextTasks(jobs, timeout);
-    if (task !== undefined) {
+    if (task) {
         let promise = task.promise;
         let index = task.index;
 
